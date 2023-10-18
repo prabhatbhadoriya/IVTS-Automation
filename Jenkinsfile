@@ -13,7 +13,7 @@ pipeline {
           echo "Shell Script Output: ${scriptOutput}"
           def connect = sh 'aws eks update-kubeconfig --name monitoring-poc'
           echo "Shell Script connect  Output: ${connect }"
-          aws ec2 describe-instances --query 'Reservations[*].Instances[*].[InstanceId,InstanceType,State.Name,PrivateIpAddress,PublicIpAddress]' --output table
+          def test3  = sh "aws ec2 describe-instances --query 'Reservations[*].Instances[*].[InstanceId,InstanceType,State.Name,PrivateIpAddress,PublicIpAddress]' --output table"
         }
 
       }
