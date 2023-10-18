@@ -9,7 +9,6 @@ pipeline {
     stage('test') {
       steps {
         sh 'echo "hello this is first code pipeline"'
-        sh 'aws eks list-clusters'
       }
     }
 
