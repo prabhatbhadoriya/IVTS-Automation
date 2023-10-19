@@ -10,9 +10,13 @@ pipeline {
       steps {
         script {
           def scriptOutput = sh(script: 'aws eks list-clusters --output json', returnStdout: true).trim()
+          def jsonSlurper = new groovy.json.JsonSlurper()
+          def json = jsonSlurper.parseText(scriptOutput)
 
 
           echo "Shell Script Output: ${scriptOutput}"
+
+          echo "json Script Output: ${json}"
 
           def connectWithRegion = sh 'aws eks update-kubeconfig --name monitoring-poc --region ap-south-1'
           sh 'kubectl get nodes -l eks.amazonaws.com/nodegroup=primary'
