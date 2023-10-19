@@ -13,6 +13,9 @@ pipeline {
           def jsonSlurper = new groovy.json.JsonSlurper()
           def json = jsonSlurper.parseText(scriptOutput)
 
+          sh 'date'
+
+
 
           echo "Shell Script Output: ${scriptOutput}"
 
