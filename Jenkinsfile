@@ -9,7 +9,7 @@ pipeline {
     stage('test') {
       steps {
         script {
-          sh 'date'
+          sh 'date +%H:%M'
           def scriptOutput = sh(script: 'aws eks list-clusters --output json', returnStdout: true).trim()
           def jsonSlurper = new groovy.json.JsonSlurper()
           def json = jsonSlurper.parseText(scriptOutput)
