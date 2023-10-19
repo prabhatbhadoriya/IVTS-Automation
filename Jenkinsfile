@@ -16,7 +16,7 @@ pipeline {
 
           echo "Shell Script Output: ${scriptOutput}"
 
-          echo "json Script Output: ${json}"
+          echo "json Script Output: ${json.clusters[0]}"
 
           def connectWithRegion = sh 'aws eks update-kubeconfig --name monitoring-poc --region ap-south-1'
           sh 'kubectl get nodes -l eks.amazonaws.com/nodegroup=primary'
