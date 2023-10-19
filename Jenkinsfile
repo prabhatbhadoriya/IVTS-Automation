@@ -9,7 +9,8 @@ pipeline {
     stage('test') {
       steps {
         script {
-          def scriptOutput = sh(script: 'aws eks list-clusters --output json', returnStatus: true).trim()
+          def scriptOutput = sh(script: 'aws eks list-clusters --output json', returnStdout: true).trim()
+
 
           echo "Shell Script Output: ${scriptOutput}"
 
