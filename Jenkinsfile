@@ -9,7 +9,10 @@ pipeline {
     stage('test') {
       steps {
         script {
-          sh 'date +%H:%M'
+          current_time=$(date +"%H:%M")
+          echo "Current time in 24-hour format: $current_time"
+
+          // sh 'date +%H:%M'
           def scriptOutput = sh(script: 'aws eks list-clusters --output json', returnStdout: true).trim()
           def jsonSlurper = new groovy.json.JsonSlurper()
           def json = jsonSlurper.parseText(scriptOutput)
