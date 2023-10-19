@@ -9,7 +9,8 @@ pipeline {
     stage('test') {
       steps {
         script {
-          def scriptOutput = sh 'aws eks list-clusters --output json'
+          def scriptOutput = sh(script: 'aws eks list-clusters --output json', returnStatus: true).trim()
+
           echo "Shell Script Output: ${scriptOutput}"
 
           def connectWithRegion = sh 'aws eks update-kubeconfig --name monitoring-poc --region ap-south-1'
