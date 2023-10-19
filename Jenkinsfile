@@ -29,4 +29,7 @@ pipeline {
     }
 
   }
+  triggers {
+    cron('30 16 * * *')
+  }
 }
